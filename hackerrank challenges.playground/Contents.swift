@@ -127,3 +127,34 @@ func camelcase(s: String) -> Int {
 var deneme = "dsadAsdasdRsdsadOadkaslşdWsdsadRsdasda"
 
 print(camelcase(s: deneme))
+
+//grading students
+func gradingStudents(grades: [Int]) -> [Int] {
+    var result = [Int]()
+    for all in grades{
+        switch all % 5 {
+        case 4:
+            let roundedValue = all + 1
+            if roundedValue < 40 {
+                print("no change for \(roundedValue)")
+                result.append(all)
+            }else{
+                result.append(roundedValue)
+            }
+        case 3:
+            let roundedValue = all + 2
+            if roundedValue < 40 {
+                print("no change for \(roundedValue)")
+                result.append(all)
+            }else{
+                result.append(roundedValue)
+            }
+        default:
+            result.append(all)
+        }
+    }
+    
+    return result
+}
+let ok = [73, 67, 38, 33]
+print(gradingStudents(grades: ok))

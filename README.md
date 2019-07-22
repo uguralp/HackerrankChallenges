@@ -11,5 +11,6 @@
 - Mini-Max Sum
 - Two Strings
 - CamelCase
+- Grade Students
 
 More will be added.

@@ -158,3 +158,55 @@ func gradingStudents(grades: [Int]) -> [Int] {
 }
 let ok = [73, 67, 38, 33]
 print(gradingStudents(grades: ok))
+
+
+// Bon Appétit
+func bonAppetit(bill: [Int], k: Int, b: Int) -> Void {
+    var chargedBill = bill
+    var sharedBill = [Int]()
+    var total = 0
+    var actualBill = 0
+    var itemFound = false
+    
+    for all in chargedBill{
+        
+        if all == bill[k]{
+            if itemFound == false{
+                chargedBill.remove(at: k)
+                itemFound = true
+            }else{
+                sharedBill.append(all)
+                total += all
+            }
+        }else{
+            sharedBill.append(all)
+            total += all
+        }
+    }
+    
+    actualBill = total / 2
+    
+    if actualBill == b{
+        print("Bon Appetit")
+    }else{
+        print(b - actualBill)
+    }
+}
+
+let bill = [3, 10, 2, 9]
+bonAppetit(bill: bill, k: 1, b: 12)
+
+//Arrays: Left Rotation
+func rotLeft(a: [Int], d: Int) -> [Int] {
+    var arr = a
+    let size = arr.count - 1
+    for i in 0...size  {
+        let newloc = (i + (arr.count - d)) % arr.count
+        arr[newloc] = a[i]
+    }
+    return arr
+    
+}
+
+var rotateLeft = rotLeft(a: [1, 2, 3, 4, 5], d: 3)
+print(rotateLeft)

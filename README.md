@@ -12,5 +12,7 @@
 - Two Strings
 - CamelCase
 - Grade Students
+- Bon Appétit
+- Arrays: Left Rotation
 
 More will be added.

@@ -14,5 +14,6 @@
 - Grade Students
 - Bon Appétit
 - Arrays: Left Rotation
+- Caesar Cipher: Encryption
 
 More will be added.

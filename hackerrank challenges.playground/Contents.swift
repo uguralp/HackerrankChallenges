@@ -210,3 +210,77 @@ func rotLeft(a: [Int], d: Int) -> [Int] {
 
 var rotateLeft = rotLeft(a: [1, 2, 3, 4, 5], d: 3)
 print(rotateLeft)
+
+// Caesar Cipher: Encryption
+func caesarCipher(s: String, k: Int) -> String{
+    let range = UInt8(ascii: "a")...UInt8(ascii: "z")
+    let rangeUppercased = UInt8(ascii: "A")...UInt8(ascii: "Z") // CountableClosedRange<UInt8>
+    // Convert ASCII codes into Character values
+    let alphabet = range.map { Character(UnicodeScalar($0)) } // Array<Character>
+    var uppercasedAlphabet = rangeUppercased.map { Character(UnicodeScalar($0)) }
+    
+    var result = String()
+    var arrayString = Array(s)
+    var indexes = [Int]()
+    var key = k
+    
+    if key > alphabet.count{
+        repeat{
+            key = key - alphabet.count
+        }while key >= alphabet.count
+    }
+    
+    for i in 0...arrayString.count-1{
+        
+        if uppercasedAlphabet.contains(arrayString[i]){
+            indexes.append(uppercasedAlphabet.firstIndex(of: arrayString[i])!)
+        }else{
+            let letters = CharacterSet.letters
+            let range = String(arrayString[i]).rangeOfCharacter(from: letters)
+            
+            if range == nil{
+                indexes.append(100)
+            }else{
+                indexes.append(alphabet.firstIndex(of: arrayString[i])!)
+            }
+        }
+        
+    }
+    
+    for i in 0...arrayString.count-1{
+        let letters = CharacterSet.letters
+        let range = String(arrayString[i]).rangeOfCharacter(from: letters)
+        
+        if range == nil{
+            result += String(arrayString[i])
+        }else{
+            if uppercasedAlphabet.contains(arrayString[i]){
+                if key + indexes[i] > uppercasedAlphabet.count || key + indexes[i] == uppercasedAlphabet.count {
+                    var number = 0
+                    number = key - ((alphabet.count-1)-indexes[i])
+                    arrayString[i] = uppercasedAlphabet[number-1]
+                    result += String(arrayString[i])
+                } else{
+                    arrayString[i] = uppercasedAlphabet[key + indexes[i]]
+                    result += String(arrayString[i])
+                }
+            }else{
+                if key + indexes[i] > alphabet.count || key + indexes[i] == alphabet.count {
+                    var number = 0
+                    number = key - ((alphabet.count-1)-indexes[i])
+                    arrayString[i] = alphabet[number-1]
+                    result += String(arrayString[i])
+                } else{
+                    arrayString[i] = alphabet[key + indexes[i]]
+                    result += String(arrayString[i])
+                }
+            }
+            
+        }
+    }
+    return result
+}
+
+var alaq = "www.abc.xy"
+
+print(caesarCipher(s: alaq, k: 87))

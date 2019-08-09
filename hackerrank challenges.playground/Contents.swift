@@ -284,3 +284,19 @@ func caesarCipher(s: String, k: Int) -> String{
 var alaq = "www.abc.xy"
 
 print(caesarCipher(s: alaq, k: 87))
+
+//Time Conversion
+func timeConversion(s: String) -> String {
+    let dateAsString = s
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "h:mm:ssa"
+    let date = dateFormatter.date(from: dateAsString)
+    
+    dateFormatter.dateFormat = "HH:mm:ss"
+    let date24 = dateFormatter.string(from: date!)
+    
+    return date24
+    
+}
+var tc = timeConversion(s: "07:05:45PM")
+print(tc)

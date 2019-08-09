@@ -15,5 +15,6 @@
 - Bon Appétit
 - Arrays: Left Rotation
 - Caesar Cipher: Encryption
+- Time Conversion
 
 More will be added.
